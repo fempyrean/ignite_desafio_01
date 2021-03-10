@@ -77,7 +77,7 @@ app.delete('/todos/:id', checksExistsUserAccount, (request, response) => {
   const { todos } = request.user
   const todo = todos.find((todo) => todo.id === id)
   if (!todo) return response.status(404).json({ error: 'Could not find todo' })
-  todos.splice(todo, 1)
+  todos.splice(todos.indexOf(todo), 1)
   return response.status(204).send()
 })
 
